@@ -66,14 +66,13 @@ export default class ListItem extends React.PureComponent {
         onPress={this._onPress.bind(this)} ref='item'>
         <Animated.View style={[styles.container, { height: this.state.extendAnim }]}>
           <Animated.Image
-            source={{uri: this.props.data.thumb}}
+            source={{uri: "http://web.uri.edu/commuter-housing/files/Facebook_Logo.png"}}
             style={[styles.thumbnail, {opacity: opacity}]}>
           </Animated.Image>
           <Animated.View style={[styles.rightContainer, {opacity: opacity}]}>
-            <Text numberOfLines={2} style={styles.title}>{this.props.data.title}</Text>
+            <Text numberOfLines={2} style={styles.title}>{this.props.data.message}</Text>
             <View style={styles.articleMeta}>
-              <View style={styles.publishedContainer}><Text style={styles.published}>{this.props.data.mask_author ? "Club Admin" : "Author Name"}</Text></View>
-              <View style={styles.viewCountContainer}><Text style={styles.viewCount}>{this.props.data.view_count} views</Text></View>
+              <View style={styles.viewCountContainer}><Text style={styles.viewCount}>{this.props.data.created_time}</Text></View>
             </View>
           </Animated.View>
         </Animated.View>

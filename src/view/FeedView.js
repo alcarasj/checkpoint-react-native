@@ -22,6 +22,8 @@ import {
 } from 'react-native';
 import styles from '../config/Styles';
 import Icon from 'react-native-vector-icons/Ionicons';
+import MockData from '../MockData';
+import ListItem from '../component/ListItem';
 import FBSDK from 'react-native-fbsdk';
 const {
   GraphRequest,
@@ -47,7 +49,7 @@ export default class FeedView extends React.PureComponent {
     super(props);
     this.state = {
       refreshing: true,
-      posts: null,
+      posts: MockData,
       selectedID: -1,
       headerState: 0,
       scrollY: new Animated.Value(0),
@@ -58,7 +60,7 @@ export default class FeedView extends React.PureComponent {
   componentDidMount() {
     this.setState({
       refreshing: false,
-      posts: this._getPosts(),
+      //posts: this._getPosts(),
     });
   }
 
@@ -93,7 +95,7 @@ export default class FeedView extends React.PureComponent {
 
   _onRefresh() {
     this.setState({refreshing: true});
-    this._getPosts();
+    //this._getPosts();
     this.setState({refreshing: false});
   }
 
