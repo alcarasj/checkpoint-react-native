@@ -10,6 +10,7 @@ import {
   HEADER_OFFSET,
   LISTITEM_MIN_HEIGHT,
   LISTITEM_MAX_HEIGHT,
+  LISTITEM_BORDER_WIDTH,
   OPACITY_ANIMATION_DURATION,
   TRANSLATE_ANIMATION_DURATION,
   HEADER_SCROLL_DISTANCE,
@@ -39,10 +40,8 @@ import {
      right: 0,
    },
    headerText: {
-     color: '#fffc0b',
-   },
-   headerPrimaryText: {
-     fontSize: 20,
+     color: '#fff',
+     fontSize: 24,
    },
    headerSecondaryText: {
      fontSize: 10,
@@ -97,7 +96,7 @@ import {
      flexDirection: 'row',
      justifyContent: 'center',
      alignItems: 'center',
-     borderBottomWidth: 5,
+     borderBottomWidth: 2.5,
      borderBottomColor: '#ddd',
      backgroundColor: '#fff',
      // padding: 4,
@@ -141,6 +140,6 @@ import {
    },
    thumbnail: {
      width: 80,
-     height: LISTITEM_MIN_HEIGHT - 5,
+     height: LISTITEM_MIN_HEIGHT - LISTITEM_BORDER_WIDTH,
    },
  });

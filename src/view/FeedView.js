@@ -159,18 +159,18 @@ export default class FeedView extends React.PureComponent {
           <Animated.View style={[styles.header, this.props.style, { height: headerTranslate } ]}>
           <Animated.View style={[styles.leftItem, { opacity : headerOpacity }]}>
           <TouchableOpacity onPress={() => alert('Menu')}>
-          <Icon name="ios-options-outline" size={HEADER_ICON_SIZE} color="#fffc0b" />
+          <Icon name="logo-facebook" size={HEADER_ICON_SIZE} color="#fff" />
           </TouchableOpacity>
           </Animated.View>
           <View
           accessible={true}
           accessibilityTraits="header"
           style={styles.centerItem}>
-          <Animated.Text style={[styles.headerText, styles.headerPrimaryText, { opacity: headerOpacity }]}>Checkpoint</Animated.Text>
+          <Animated.Text style={[styles.headerText, { opacity: headerOpacity }]}>Checkpoint</Animated.Text>
           </View>
           <Animated.View style={[styles.rightItem, { opacity: headerOpacity }]}>
           <TouchableOpacity onPress={() => alert('Add a post')}>
-          <Icon name="ios-add" size={HEADER_ICON_SIZE+10} color="#fffc0b" />
+          <Icon name="ios-settings" size={HEADER_ICON_SIZE} color="#fff" />
           </TouchableOpacity>
           </Animated.View>
           </Animated.View>

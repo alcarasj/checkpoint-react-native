@@ -70,7 +70,7 @@ export default class ListItem extends React.PureComponent {
             style={[styles.thumbnail, {opacity: opacity}]}>
           </Animated.Image>
           <Animated.View style={[styles.rightContainer, {opacity: opacity}]}>
-            <Text numberOfLines={2} style={styles.title}>{this.props.data.message}</Text>
+            <Text style={styles.title}>{this.props.data.message}</Text>
             <View style={styles.articleMeta}>
               <View style={styles.viewCountContainer}><Text style={styles.viewCount}>{this.props.data.created_time}</Text></View>
             </View>
