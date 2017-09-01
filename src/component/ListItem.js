@@ -21,6 +21,7 @@ import {
   Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Animatable from 'react-native-animatable';
 import styles from '../config/Styles';
 import {
   STATUS_BAR_HEIGHT,
@@ -55,28 +56,12 @@ export default class ListItem extends React.PureComponent {
   }
 
   render() {
-    const opacity = this.state.opacityAnim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [1, 0],
-      extrapolate: 'clamp',
-    });
-
     return (
-      <TouchableHighlight
-        onPress={this._onPress.bind(this)} ref='item'>
-        <Animated.View style={[styles.container, { height: this.state.extendAnim }]}>
-          <Animated.Image
-            source={{uri: "http://web.uri.edu/commuter-housing/files/Facebook_Logo.png"}}
-            style={[styles.thumbnail, {opacity: opacity}]}>
-          </Animated.Image>
-          <Animated.View style={[styles.rightContainer, {opacity: opacity}]}>
-            <Text style={styles.title}>{this.props.data.message}</Text>
-            <View style={styles.articleMeta}>
-              <View style={styles.viewCountContainer}><Text style={styles.viewCount}>{this.props.data.created_time}</Text></View>
-            </View>
+        <Animated.View style={styles.container}>
+          <Animated.View style={styles.rightContainer}>
+            <Text style={styles.content}>{this.props.data.message}</Text>
           </Animated.View>
         </Animated.View>
-      </TouchableHighlight>
     );
   }
 }

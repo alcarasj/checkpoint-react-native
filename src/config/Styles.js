@@ -46,11 +46,6 @@ import {
    headerSecondaryText: {
      fontSize: 10,
    },
-   crest: {
-     width: 35,
-     height: 35,
-     borderRadius: 5,
-   },
    leftItem: {
      flex: 1,
      alignItems: 'flex-start',
@@ -85,7 +80,8 @@ import {
      flex: 1,
      flexDirection: 'column',
      justifyContent: 'center',
-     backgroundColor: '#ddd',
+     backgroundColor: '#fff',
+     fontSize: 16,
    },
    listView: {
      paddingTop: HEADER_MAX_HEIGHT,

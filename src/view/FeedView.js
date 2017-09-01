@@ -21,7 +21,8 @@ import {
   Dimensions,
 } from 'react-native';
 import styles from '../config/Styles';
-import Interactable from 'react-native-interactable'
+import Interactable from 'react-native-interactable';
+import Animatable from 'react-native-animatable';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MockData from '../MockData';
 import ListItem from '../component/ListItem';
