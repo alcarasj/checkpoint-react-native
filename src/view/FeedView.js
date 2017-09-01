@@ -21,10 +21,11 @@ import {
   Dimensions,
 } from 'react-native';
 import styles from '../config/Styles';
+import Interactable from 'react-native-interactable'
 import Icon from 'react-native-vector-icons/Ionicons';
 import MockData from '../MockData';
 import ListItem from '../component/ListItem';
-import FBSDK from 'react-native-fbsdk';
+const FBSDK = require('react-native-fbsdk');
 const {
   GraphRequest,
   GraphRequestManager,
@@ -69,7 +70,7 @@ export default class FeedView extends React.PureComponent {
       httpMethod: 'GET',
       version: 'v2.10',
       parameters: null,
-      accessToken: null
+      accessToken: '486914711673894|OYDXPanpQFl5qAwrQcBXIIZcPIE'
     }
 
     const infoRequest = new GraphRequest(
@@ -77,14 +78,10 @@ export default class FeedView extends React.PureComponent {
       getRequestConfig,
       this._responseInfoCallback,
     );
-
-    const requestManager = new GraphRequestManager();
-    requestManager.addRequest(infoRequest);
-    requestManager.start();
-    console.log(requestManager)
+    new GraphRequestManager().addRequest(infoRequest).start();
   }
 
-  _responseInfoCallback(error: ?Object, result: ?Object) {
+  _responseInfoCallback(error, result) {
     if (error) {
       alert('Error fetching data: ' + error.toString());
     } else {
