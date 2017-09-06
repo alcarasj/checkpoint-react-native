@@ -3,18 +3,7 @@ import {
   Platform,
   Dimensions,
 } from 'react-native';
-import {
-  STATUS_BAR_HEIGHT,
-  HEADER_MAX_HEIGHT,
-  HEADER_MIN_HEIGHT,
-  HEADER_OFFSET,
-  LISTITEM_MIN_HEIGHT,
-  LISTITEM_MAX_HEIGHT,
-  LISTITEM_BORDER_WIDTH,
-  OPACITY_ANIMATION_DURATION,
-  TRANSLATE_ANIMATION_DURATION,
-  HEADER_SCROLL_DISTANCE,
- } from './Constants';
+import * as Constants from '../config/Constants';
 
  export default StyleSheet.create({
    header: {
@@ -55,7 +44,7 @@ import {
    leftSubItem: {
      flex: 1,
      flexDirection: 'column',
-     paddingTop: HEADER_MAX_HEIGHT/4,
+     paddingTop: Constants.HEADER_MAX_HEIGHT/4,
    },
    rightSubItem: {
      flex: 1,
@@ -84,7 +73,7 @@ import {
      fontSize: 16,
    },
    listView: {
-     paddingTop: HEADER_MAX_HEIGHT,
+     paddingTop: Constants.HEADER_MAX_HEIGHT,
      backgroundColor: '#ddd',
    },
    container: {
@@ -136,6 +125,6 @@ import {
    },
    thumbnail: {
      width: 80,
-     height: LISTITEM_MIN_HEIGHT - LISTITEM_BORDER_WIDTH,
+     height: Constants.LISTITEM_MIN_HEIGHT - Constants.LISTITEM_BORDER_WIDTH,
    },
  });
