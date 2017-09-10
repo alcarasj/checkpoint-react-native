@@ -41,7 +41,7 @@ export default class FeedView extends React.PureComponent {
     super(props);
     this.state = {
       refreshing: true,
-      posts: MockData,
+      posts: undefined,
       selectedID: -1,
       headerState: 0,
       scrollY: new Animated.Value(0),
@@ -52,33 +52,23 @@ export default class FeedView extends React.PureComponent {
   componentDidMount() {
     this.setState({
       refreshing: false,
-      //posts: this._getPosts(),
     });
+    this._getPosts();
   }
 
   _getPosts() {
-    const getRequestConfig = {
-      httpMethod: 'GET',
-      version: 'v2.10',
-      parameters: null,
-      accessToken: '486914711673894|OYDXPanpQFl5qAwrQcBXIIZcPIE'
-    }
-
-    const infoRequest = new GraphRequest(
-      '/274943915939004/posts',
-      getRequestConfig,
-      this._responseInfoCallback,
-    );
-    new GraphRequestManager().addRequest(infoRequest).start();
-  }
-
-  _responseInfoCallback(error, result) {
-    if (error) {
-      alert('Error fetching data: ' + error.toString());
-    } else {
-      alert('Success fetching data: ' + result.toString());
-      console.log(result.toString());
-    }
+    fetch('https://graph.facebook.com/274943915939004/posts?access_token=486914711673894|OYDXPanpQFl5qAwrQcBXIIZcPIE', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json;version=2',
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => response.json())
+    .then((responseJSON) => {
+      console.log(responseJSON);
+      this.setState({posts: responseJSON.data});
+    });
   }
 
   _onRefresh() {
@@ -91,9 +81,9 @@ export default class FeedView extends React.PureComponent {
 
   _renderItem = ({item, index}) => (
     <ListItem
-    onPressItem={this._onPressItem}
-    data={item}
-    selected={item.id == this.state.selectedID}
+      onPressItem={this._onPressItem}
+      data={item}
+      selected={item.id === this.state.selectedID}
     />
   );
 
@@ -110,16 +100,10 @@ export default class FeedView extends React.PureComponent {
       />
       <AnimatedFlatList
       contentContainerStyle={[styles.listView]}
-      bounces={false}
-      bouncesZoom={false}
-      alwaysBounceVertical={false}
       ref={(ref) => {this.listRef = ref}}
-      getItemLayout={(data, index) => (
-        {length: 80 + 5, offset: (80 + 5) * index, index}
-      )}
       scrollEventThrottle={16}
       data={this.state.posts}
-      extraData={this.state}
+      extraData={this.state.posts}
       onScroll={
         Animated.event([{
           nativeEvent: { contentOffset: { y: this.state.scrollY }}}],
@@ -133,8 +117,8 @@ export default class FeedView extends React.PureComponent {
           refreshing={this.state.refreshing}
           onRefresh={this._onRefresh.bind(this)}/>}
           >
-          </AnimatedFlatList>
-          <Header scrollValue={this.state.scrollY}/>
+      </AnimatedFlatList>
+      <Header scrollValue={this.state.scrollY}/>
           </View>
         );
       }
