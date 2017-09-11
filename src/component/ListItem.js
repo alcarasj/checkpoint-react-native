@@ -47,6 +47,10 @@ export default class ListItem extends React.PureComponent {
   render() {
     return (
         <Animated.View style={styles.container}>
+          <Image
+          source={{uri: this.props.data.thumb}}
+          style={[styles.thumbnail]}>>
+          </Image>
           <Animated.View style={styles.rightContainer}>
             <Text style={styles.content}>{this.props.data.message}</Text>
           </Animated.View>

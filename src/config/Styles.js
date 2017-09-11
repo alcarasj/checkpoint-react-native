@@ -84,7 +84,7 @@ import * as Constants from '../config/Constants';
      borderBottomWidth: 2.5,
      borderBottomColor: '#ddd',
      backgroundColor: '#fff',
-     // padding: 4,
+     padding: 10,
    },
    rightContainer: {
      flex: 1,
